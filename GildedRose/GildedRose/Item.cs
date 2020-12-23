@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -33,7 +33,10 @@ namespace GildedRose
 
         public void update_quality(Item inItem)
         {
-            inItem.sell_in--;
+            if(inItem.name != "Sulfuras, Hand of Ragnaros")
+            {
+                inItem.sell_in--;
+            }
             //Updates the sell in days and quality according to item sent in
             if (inItem.quality > 0 && inItem.quality < 50)
             {
@@ -64,9 +67,6 @@ namespace GildedRose
                         {
                             inItem.quality = inItem.quality + 3;
                         }
-                        break;
-                    case "Sulfuras, Hand of Ragnaros":
-                        inItem.sell_in++; //undo above sell days decrement
                         break;
                     default:
                         inItem.quality = inItem.quality - (1 * conjuredFactor);
